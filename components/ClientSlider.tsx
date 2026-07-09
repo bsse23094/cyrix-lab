@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 const clients = [
   { name: "HST", src: "/hst.png" },
@@ -31,7 +32,7 @@ export default function ClientSlider() {
         {[...clients, ...clients, ...clients, ...clients].map((client, idx) => (
           <div key={idx} className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
             <Image
-              src={client.src}
+              src={asset(client.src)}
               alt={client.name}
               width={200}
               height={80}

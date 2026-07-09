@@ -1,6 +1,7 @@
 import Section from "./Section";
 import FadeUp from "./FadeUp";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 const team = [
   {
@@ -56,7 +57,7 @@ export default function Team() {
                 {/* Image Container */}
                 <div className="relative w-full aspect-[4/5] overflow-hidden border-b-[4px] border-[#0e0e0e] bg-[#0e0e0e]">
                   <Image
-                    src={member.image}
+                    src={asset(member.image)}
                     alt={member.name}
                     fill
                     className="object-cover grayscale opacity-80 mix-blend-luminosity transition-all duration-150 group-hover:grayscale-0 group-hover:opacity-100 group-hover:mix-blend-normal"

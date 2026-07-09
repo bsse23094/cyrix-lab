@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 const navLinks = [
   {
@@ -77,7 +78,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" aria-label="Cyrix Lab home" className="flex items-center group">
             <Image
-              src="/cyrix.png"
+              src={asset("/cyrix.png")}
               alt="Cyrix Lab"
               width={220}
               height={70}
