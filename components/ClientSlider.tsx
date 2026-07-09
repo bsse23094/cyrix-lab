@@ -9,7 +9,15 @@ const clients = [
 
 export default function ClientSlider() {
   return (
-    <div className="w-full bg-white border-b-[4px] border-[#0e0e0e] py-8 overflow-hidden relative flex items-center">
+    <div className="w-full bg-white border-b-[4px] border-[#0e0e0e] pt-4 pb-6 md:py-8 overflow-hidden relative flex flex-col justify-center">
+      {/* Mobile Title (thin line with text) */}
+      <div className="md:hidden w-full flex items-center gap-4 px-6 mb-6">
+        <span className="text-[12px] font-black tracking-widest uppercase text-[#0e0e0e]">
+          Trusted By
+        </span>
+        <div className="flex-grow h-[2px] bg-[#0e0e0e]/20"></div>
+      </div>
+
       {/* Title block on the left (hidden on mobile) */}
       <div className="hidden md:flex absolute left-0 top-0 bottom-0 bg-[#e05d26] border-r-[4px] border-[#0e0e0e] z-10 items-center justify-center px-6 shadow-[4px_0_0_#0e0e0e]">
         <span className="text-[14px] font-black tracking-widest uppercase text-[#0e0e0e]">
@@ -18,7 +26,7 @@ export default function ClientSlider() {
       </div>
 
       {/* Marquee container */}
-      <div className="flex animate-marquee md:ml-[160px]">
+      <div className="flex animate-marquee md:ml-[160px] items-center">
         {/* Duplicate list to create infinite scroll */}
         {[...clients, ...clients, ...clients, ...clients].map((client, idx) => (
           <div key={idx} className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
