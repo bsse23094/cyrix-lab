@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -66,6 +66,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleHashClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("/#")) return;
+
+    const hash = href.slice(2);
+    const target = document.getElementById(hash);
+
+    if (!target || window.location.pathname !== "/") return;
+
+    event.preventDefault();
+    setMenuOpen(false);
+    window.history.pushState(null, "", `#${hash}`);
+
+    const headerOffset = 88;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top: targetTop, behavior: "smooth" });
+  };
+
   return (
     <header 
       className={`fixed z-50 left-0 right-0 top-0 transition-transform duration-300 ease-out ${isVisible ? "translate-y-0" : "-translate-y-full"}`} 
@@ -92,6 +109,7 @@ export default function Navbar() {
               <div key={link.label} className="group relative h-full flex items-center px-4">
                 <Link
                   href={link.href}
+                  onClick={(event) => handleHashClick(event, link.href)}
                   className="flex items-center text-[15px] font-black tracking-widest text-[#0e0e0e] py-2 relative"
                 >
                   {link.label}
@@ -133,6 +151,7 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <Link
               href="/#contact"
+              onClick={(event) => handleHashClick(event, "/#contact")}
               className="hidden md:inline-flex group relative items-center justify-center gap-3 px-8 py-3 bg-[#e05d26] text-[#0e0e0e] border-[3px] border-[#0e0e0e] shadow-[4px_4px_0_#0e0e0e] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[0px_0px_0_#0e0e0e] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
             >
               <span className="text-[14px] font-black uppercase tracking-widest">
@@ -168,7 +187,10 @@ export default function Navbar() {
               <div key={link.label} className="flex flex-col gap-4 border-b-[4px] border-[#0e0e0e] pb-4">
                 <Link
                   href={link.href}
-                  onClick={() => !link.dropdown && setMenuOpen(false)}
+                  onClick={(event) => {
+                    handleHashClick(event, link.href);
+                    if (!link.dropdown) setMenuOpen(false);
+                  }}
                   className="text-[28px] font-black uppercase tracking-tighter text-[#0e0e0e] hover:text-[#e05d26] transition-colors duration-300"
                 >
                   {link.label}
@@ -192,7 +214,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/#contact"
-              onClick={() => setMenuOpen(false)}
+              onClick={(event) => handleHashClick(event, "/#contact")}
               className="mt-4 inline-flex justify-center items-center gap-3 px-8 py-4 bg-[#e05d26] text-[#0e0e0e] border-[4px] border-[#0e0e0e] shadow-[6px_6px_0_#0e0e0e] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none w-full font-black text-[18px] tracking-widest uppercase"
             >
               Start a project
