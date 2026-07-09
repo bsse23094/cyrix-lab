@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #ffffff;
+  --color-surface: #f8f7f5;
+  --color-text-primary: #0e0e0e;
+  --color-text-secondary: #787878;
+  --color-text-muted: #b0b0b0;
+  --color-accent: #e05d26;
+  --color-accent-hover: #c4501f;
+  --color-border: #e4e4e0;
+  --font-sans: "Google Sans Flex", -apple-system, "Helvetica Neue", sans-serif;
+  --font-display: "Righteous", "Google Sans Flex", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #efebe1;
+    color: #0e0e0e;
+    font-family: "Google Sans Flex", -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+  }
+
+  /* Only main headings use Righteous — h3 and below stay in body font */
+  h1, h2 {
+    font-family: "Righteous", "Google Sans Flex", sans-serif;
+    letter-spacing: 0em;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid #e05d26;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: #e05d26;
+    color: #ffffff;
+  }
+}
+
+/* ─── Fade-up animation ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-up-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.25s ease-out,
+              transform 0.25s ease-out;
+}
+
+/* ─── Link underline animation ──────────────────────── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.22s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Brutalist Buttons ─────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e0e0e;
+  color: #ffffff;
+  border: 2px solid #0e0e0e;
+  box-shadow: 4px 4px 0 #e05d26;
+  transition: all 0.15s ease-out;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.btn-primary:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #e05d26;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #0e0e0e;
+  border: 2px solid #0e0e0e;
+  box-shadow: 4px 4px 0 #0e0e0e;
+  transition: all 0.15s ease-out;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.btn-ghost:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #0e0e0e;
+  background-color: #0e0e0e;
+  color: #ffffff;
+}
