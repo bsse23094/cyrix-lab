@@ -127,3 +127,14 @@
   background-color: #0e0e0e;
   color: #ffffff;
 }
+
+/* ─── Infinite Marquee ──────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+}

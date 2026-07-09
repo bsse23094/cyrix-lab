@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import ClientSlider from "@/components/ClientSlider";
 import Problem from "@/components/Problem";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <ClientSlider />
       <Problem />
       <Services />
       <Process />
