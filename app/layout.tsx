@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Cyrix Lab — Custom Software for Operations",
     description:
       "We build internal tools, automation systems, and monitoring dashboards that help businesses move faster and fix problems in real time.",
-    url: "https://cyrixlab.com",
+    url: "https://cyrixlab.tech",
     siteName: "Cyrix Lab",
     type: "website",
     locale: "en_US",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description:
       "Internal tools, automation, and monitoring dashboards built around how your team actually works.",
   },
-  metadataBase: new URL("https://cyrixlab.com"),
+  metadataBase: new URL("https://cyrixlab.tech"),
   robots: {
     index: true,
     follow: true,
